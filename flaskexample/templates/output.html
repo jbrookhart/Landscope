@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Landscope</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -33,66 +33,155 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-"templates/cesareans.html" 89L, 3618C
-        </div><!--/.nav-collapse -->
+<!--     <nav class="navbar navbar-inverse navbar-fixed-top">
+        </div>
       </div>
-    </nav>
+    </nav> -->
 
 <br><br>
+  <div class="container">
 
- <div class="container">
-    <div class="starter-template">
-        <h2>Output Page</h2>
-        <p>Enter some user input</p>
+    <div class="col-md-12">
+      <img src="../static/logo.svg" class="center-block">
+      <h3 scope out the plants for your landscape></h3>
     </div>
 
-        <div class = "container">
+    <div class="row">
+      <div class="col-md-6">
+<!--         <div class="starter-template">
 
-      <form  action="/output" method="GET">
-        <div class="form-group">
-          <label for="zipcode">Zipcode:</label>
-          <input type="text" id="zipcode" name='zipcode' placeholder="e.g. ">
+            <h2>Landscope</h2>
+        </div> -->
+        <form  action="/output" method="GET">
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name='address' value="{{address}} ">
+          </div>
+          <div class="form-group">
+            <label for="sun">Sun:</label>
+            <select name="sun">
+              <option {% if sun == "All" %} selected {% endif %} value="All">All</option>
+              <option {% if sun == "Full Sun" %} selected {% endif %} value="Full Sun">Full Sun</option>
+              <option {% if sun == "Sun to Partial Shade" %} selected {% endif %} value="Sun to Partial Shade">Sun to Partial Shade</option>
+              <option {% if sun == "Light Shade" %} selected {% endif %} value="Light Shade">Light Shade</option>
+              <option {% if sun == "Partial to Full Shade" %} selected {% endif %} value="Partial to Full Shade">Partial to Full Shade</option>
+              <option {% if sun == "Full Shade" %} selected {% endif %} value="Full Shade">Full Shade</option>        
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select name="category">
+              <option {% if category == "All" %} selected {% endif %} value="All">All</option>
+              <option {% if category == "Alpines and Rock Gardens" %} selected {% endif %} value='Alpines and Rock Gardens'>Alpines and Rock Gardens</option>
+              <option {% if category == "Annuals" %} selected {% endif %} value='Annuals'>Annuals</option>
+              <option {% if category == "Biennials" %} selected {% endif %} value='Biennials'>Biennials</option>
+              <option {% if category == "Bulbs" %} selected {% endif %} value='Bulbs'>Bulbs</option>
+              <option {% if category == "Cactus and Succulents" %} selected {% endif %} value='Cactus and Succulents'>Cactus and Succulents</option>
+              <option {% if category == "Carnivorous and Insectivorous" %} selected {% endif %} value='Carnivorous and Insectivorous'>Carnivorous and Insectivorous</option>
+              <option {% if category == "Conifers" %} selected {% endif %} value='Conifers'>Conifers</option>
+              <option {% if category == "Cycads" %} selected {% endif %} value='Cycads'>Cycads</option>
+              <option {% if category == "Edible Fruits and Nuts" %} selected {% endif %} value='Edible Fruits and Nuts'>Edible Fruits and Nuts</option>
+              <option {% if category == "Epiphytes" %} selected {% endif %} value='Epiphytes'>Epiphytes</option>
+              <option {% if category == "Ferns" %} selected {% endif %} value='Ferns'>Ferns</option>
+              <option {% if category == "Groundcovers" %} selected {% endif %} value='Groundcovers'>Groundcovers</option>
+              <option {% if category == "Herbs" %} selected {% endif %} value='Herbs'>Herbs</option>
+              <option {% if category == "Mosses and Liverworts" %} selected {% endif %} value='Mosses and Liverworts'>Mosses and Liverworts</option>
+              <option {% if category == "Ornamental Grasses and Bamboo" %} selected {% endif %} value='Ornamental Grasses and Bamboo'>Ornamental Grasses and Bamboo</option>
+              <option {% if category == "Palms" %} selected {% endif %} value='Palms'>Palms</option>
+              <option {% if category == "Parasites and Hemiparasites" %} selected {% endif %} value='Parasites and Hemiparasites'>Parasites and Hemiparasites</option>
+              <option {% if category == "Perennials" %} selected {% endif %} value='Perennials'>Perennials</option>
+              <option {% if category == "Ponds and Aquatics" %} selected {% endif %} value='Ponds and Aquatics'>Ponds and Aquatics</option>
+              <option {% if category == "Shrubs" %} selected {% endif %} value='Shrubs'>Shrubs</option>
+              <option {% if category == "Trees" %} selected {% endif %} value='Trees'>Trees</option>
+              <option {% if category == "Tropicals and Tender Perennials" %} selected {% endif %} value='Tropicals and Tender Perennials'>Tropicals and Tender Perennials</option>
+              <option {% if category == "Vegetables" %} selected {% endif %} value='Vegetables'>Vegetables</option>
+              <option {% if category == "Vines and Climbers" %} selected {% endif %} value='Vines and Climbers'>Vines and Climbers</option>   
+            </select>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-default btn-lg">Find my plants!</button>
+          </div>
+        </form>
         </div>
-        <div class="form-group">
-          <label for="sun">Sun:</label>
-          <select name="sun">
-            <option value="Red">Full Sun</option>
-            <option value="Sun to Partial Shade">Sun to Partial Shade</option>
-            <option value="Light Shade">Light Shade</option>
-            <option value="Partial to Full Shade">Partial to Full Shade</option>
-            <option value="Full Shade">Full Shade</option>        
-          </select>
+        <div class="col-md-6">
+          <h3>Nearby Nurseries</h3>
+          <div id="map"></div>
+          <script>
+            var map;
+            var infowindow;
+
+            function initMap() {
+              var pyrmont = {lat: {{ latitude }}, lng: {{ longitude }}};
+
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: pyrmont,
+                zoom: 12
+              });
+
+              infowindow = new google.maps.InfoWindow();
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch({
+                location: pyrmont,
+                radius: [5000],
+                keyword: ['garden nursery']
+              }, callback);
+
+            }
+
+            function callback(results, status) {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                  createMarker(results[i]);
+                }
+              }
+            }
+
+            function createMarker(place) {
+              var placeLoc = place.geometry.location;
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+              });
+
+              google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+              });
+            }
+          </script>
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz7woH_GRo54H02W4SAV_2JNdtpPvuPsU&libraries=places&callback=initMap" async defer></script>
         </div>
-        <div>
-          <button type="submit" class="btn btn-default btn-lg">Find my plants!</button>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+
+        <div class="container">
+          <div class="starter-template">
+            <h3>Results: Found {{num_plants}} Plants!</h3>
+          </div>
         </div>
-      </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+        {{ pagination.links }}
+        <table class="table table-hover">
+        <tr>
+          <th></th>
+          <th>Plant Name</th>
+          <th>Dangers</th>
+        </tr>
+        {% for plant in plants %}
+        <tr>
+          <td><img src = "{{ plant['image'] }}" height = "60"></td>
+          <td><a href="{{ plant['url'] }}">{{ plant['plant_name']}}</a></td>
+          <td>{{ plant['danger']}}</a></td>
+        </tr>
+        {% endfor %}
+        </table> 
+        {{ pagination.links }}
 
-  </div> <!-- /.container-->
-
-    <div class="container">
-      <div class="starter-template">
-        <h3>Results: Found {{num_plants}} Plants!</h3>
-        <p class="lead">Below is the result of your query.<br> You just took user input and looked up the information. Now we need to expand the functionality!</p>
-      </div>
-
-      <table class="table table-hover">
-      <tr><th>index</th><th>Plant Name</th></tr>
-      {% for plant in plants %}
-      <tr><td>{{ plant['index'] }}</td><td>{{ plant['plant_name']}}</td></tr>
-      {% endfor %}
-      </table>
-
-
-      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-      <script src="../static/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
 
 
-     </div><!-- /.container -->
+  </div><!-- /.container -->
 
 
 
