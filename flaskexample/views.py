@@ -143,11 +143,13 @@ def address_output():
                          danger=query_results.iloc[i]['danger']))
   result = query_results.shape[0]
 
+  page = request.args.get(get_page_parameter(), type=int, default=1)
+  
   if not result and page != 1:
     abort(404)
   def plants_this_page(plants,page):
     return plants[(page-1)*PAGENUM:page*PAGENUM]
-  page = request.args.get(get_page_parameter(), type=int, default=1)
+
   plants = plants_this_page(plants, page)
   pagination = Pagination(page=page, 
     total=result, record_name=plants, per_page=PAGENUM,

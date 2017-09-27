@@ -21,6 +21,9 @@
 /*body {
     background-color: green;
 } */
+.padded_h {
+	padding-bottom: 15px;
+}
 
 #map {
 	width: 100%;
