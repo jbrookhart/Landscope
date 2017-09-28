@@ -93,6 +93,10 @@ def fix_danger(danger):
   danger = danger.strip("{").strip("}").replace('","',', ').replace('"','')
   return danger
 
+@app.route('/slides')
+def address_slides():
+  return render_template("slides.html")
+
 @app.route('/' )
 @app.route('/index')
 def address_input():
